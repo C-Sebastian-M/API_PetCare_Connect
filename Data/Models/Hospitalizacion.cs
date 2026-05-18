@@ -23,6 +23,10 @@ public partial class Hospitalizacion
 
     public int? IdEmpleado { get; set; }
 
+    public DateTime FechaRegistroHospitalizacion { get; set; }
+
+    public DateTime? FechaModificacionHospitalizacion { get; set; }
+
     public virtual ICollection<EvolucionClinica> EvolucionClinicas { get; set; } = new List<EvolucionClinica>();
 
     public virtual Empleado? IdEmpleadoNavigation { get; set; }

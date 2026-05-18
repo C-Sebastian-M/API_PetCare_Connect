@@ -23,6 +23,10 @@ public partial class Producto
 
     public int? IdCategoria { get; set; }
 
+    public DateTime FechaRegistroProducto { get; set; }
+
+    public DateTime? FechaModificacionProducto { get; set; }
+
     public virtual ICollection<DetalleCompra> DetalleCompras { get; set; } = new List<DetalleCompra>();
 
     public virtual ICollection<DetalleFactura> DetalleFacturas { get; set; } = new List<DetalleFactura>();

@@ -19,6 +19,10 @@ public partial class Compra
 
     public int? IdSede { get; set; }
 
+    public DateTime FechaRegistroCompra { get; set; }
+
+    public DateTime? FechaModificacionCompra { get; set; }
+
     public virtual ICollection<DetalleCompra> DetalleCompras { get; set; } = new List<DetalleCompra>();
 
     public virtual Proveedor? IdProveedorNavigation { get; set; }

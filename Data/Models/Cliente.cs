@@ -23,6 +23,8 @@ public partial class Cliente
 
     public string? EstadoCliente { get; set; }
 
+    public DateTime? FechaModificacion { get; set; }
+
     public virtual ICollection<Factura> Facturas { get; set; } = new List<Factura>();
 
     public virtual ICollection<Mascotum> Mascota { get; set; } = new List<Mascotum>();

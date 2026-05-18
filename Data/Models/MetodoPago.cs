@@ -11,5 +11,9 @@ public partial class MetodoPago
 
     public string? DescripcionMetodoPago { get; set; }
 
+    public DateTime FechaRegistroMetodoPago { get; set; }
+
+    public DateTime? FechaModificacionMetodoPago { get; set; }
+
     public virtual ICollection<Pago> Pagos { get; set; } = new List<Pago>();
 }

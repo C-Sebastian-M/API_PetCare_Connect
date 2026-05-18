@@ -33,6 +33,10 @@ public partial class Empleado
 
     public int? IdSede { get; set; }
 
+    public DateTime? FechaModificacionEmpleado { get; set; }
+
+    public DateTime FechaRegistroEmpleado { get; set; }
+
     public virtual ICollection<Citum> Cita { get; set; } = new List<Citum>();
 
     public virtual ICollection<Consultum> Consulta { get; set; } = new List<Consultum>();

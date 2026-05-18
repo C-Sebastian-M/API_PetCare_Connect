@@ -1,9 +1,8 @@
 ﻿using System;
 using System.Collections.Generic;
-using API_PetCare_Connect.Data.Models;
 using Microsoft.EntityFrameworkCore;
 
-namespace API_PetCare_Connect.Data;
+namespace API_PetCare_Connect.Data.Models;
 
 public partial class PetCareConnectContext : DbContext
 {
@@ -87,7 +86,8 @@ public partial class PetCareConnectContext : DbContext
     public virtual DbSet<VacunaMascotum> VacunaMascota { get; set; }
 
     protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
-        => optionsBuilder.UseSqlServer("Name=ConnectionStrings:SqlConnection");
+//#warning To protect potentially sensitive information in your connection string, you should move it out of source code. You can avoid scaffolding the connection string by using the Name= syntax to read it from configuration - see https://go.microsoft.com/fwlink/?linkid=2131148. For more guidance on storing connection strings, see https://go.microsoft.com/fwlink/?LinkId=723263.
+        => optionsBuilder.UseSqlServer("Server=(localdb)\\MSSQLLocalDB;Database=PetCare_Connect;Trusted_Connection=true;TrustServerCertificate=true;MultipleActiveResultSets=true");
 
     protected override void OnModelCreating(ModelBuilder modelBuilder)
     {
@@ -194,6 +194,9 @@ public partial class PetCareConnectContext : DbContext
                 .HasMaxLength(20)
                 .IsUnicode(false)
                 .HasColumnName("estado_cliente");
+            entity.Property(e => e.FechaModificacion)
+                .HasColumnType("datetime")
+                .HasColumnName("fecha_modificacion");
             entity.Property(e => e.FechaRegistro).HasColumnName("fecha_registro");
             entity.Property(e => e.NombreCliente)
                 .HasMaxLength(100)
@@ -219,6 +222,13 @@ public partial class PetCareConnectContext : DbContext
             entity.Property(e => e.FechaCompra)
                 .HasColumnType("datetime")
                 .HasColumnName("fecha_compra");
+            entity.Property(e => e.FechaModificacionCompra)
+                .HasColumnType("datetime")
+                .HasColumnName("fecha_modificacion_compra");
+            entity.Property(e => e.FechaRegistroCompra)
+                .HasDefaultValueSql("(getdate())")
+                .HasColumnType("datetime")
+                .HasColumnName("fecha_registro_compra");
             entity.Property(e => e.IdProveedor).HasColumnName("id_proveedor");
             entity.Property(e => e.IdSede).HasColumnName("id_sede");
             entity.Property(e => e.NumeroFacturaProveedor)
@@ -279,6 +289,13 @@ public partial class PetCareConnectContext : DbContext
             entity.Property(e => e.FechaConsulta)
                 .HasColumnType("datetime")
                 .HasColumnName("fecha_consulta");
+            entity.Property(e => e.FechaModificacionConsulta)
+                .HasColumnType("datetime")
+                .HasColumnName("fecha_modificacion_consulta");
+            entity.Property(e => e.FechaRegistroConsulta)
+                .HasDefaultValueSql("(getdate())")
+                .HasColumnType("datetime")
+                .HasColumnName("fecha_registro_consulta");
             entity.Property(e => e.FrecuenciaCardiaca).HasColumnName("frecuencia_cardiaca");
             entity.Property(e => e.IdCita).HasColumnName("id_cita");
             entity.Property(e => e.IdEmpleado).HasColumnName("id_empleado");
@@ -449,7 +466,14 @@ public partial class PetCareConnectContext : DbContext
                 .IsUnicode(false)
                 .HasColumnName("estado_empleado");
             entity.Property(e => e.FechaContratacion).HasColumnName("fecha_contratacion");
+            entity.Property(e => e.FechaModificacionEmpleado)
+                .HasColumnType("datetime")
+                .HasColumnName("fecha_modificacion_empleado");
             entity.Property(e => e.FechaNacimiento).HasColumnName("fecha_nacimiento");
+            entity.Property(e => e.FechaRegistroEmpleado)
+                .HasDefaultValueSql("(getdate())")
+                .HasColumnType("datetime")
+                .HasColumnName("fecha_registro_empleado");
             entity.Property(e => e.FechaRetiro).HasColumnName("fecha_retiro");
             entity.Property(e => e.IdRol).HasColumnName("id_rol");
             entity.Property(e => e.IdSede).HasColumnName("id_sede");
@@ -512,6 +536,13 @@ public partial class PetCareConnectContext : DbContext
             entity.ToTable("Especie");
 
             entity.Property(e => e.IdEspecie).HasColumnName("id_especie");
+            entity.Property(e => e.FechaModificacionEspecie)
+                .HasColumnType("datetime")
+                .HasColumnName("fecha_modificacion_especie");
+            entity.Property(e => e.FechaRegistroEspecie)
+                .HasDefaultValueSql("(getdate())")
+                .HasColumnType("datetime")
+                .HasColumnName("fecha_registro_especie");
             entity.Property(e => e.NombreEspecie)
                 .HasMaxLength(50)
                 .IsUnicode(false)
@@ -584,6 +615,13 @@ public partial class PetCareConnectContext : DbContext
             entity.Property(e => e.FechaFactura)
                 .HasColumnType("datetime")
                 .HasColumnName("fecha_factura");
+            entity.Property(e => e.FechaModificacionFactura)
+                .HasColumnType("datetime")
+                .HasColumnName("fecha_modificacion_factura");
+            entity.Property(e => e.FechaRegistroFactura)
+                .HasDefaultValueSql("(getdate())")
+                .HasColumnType("datetime")
+                .HasColumnName("fecha_registro_factura");
             entity.Property(e => e.IdCliente).HasColumnName("id_cliente");
             entity.Property(e => e.IdEmpleado).HasColumnName("id_empleado");
             entity.Property(e => e.IdSede).HasColumnName("id_sede");
@@ -629,6 +667,13 @@ public partial class PetCareConnectContext : DbContext
             entity.Property(e => e.FechaIngreso)
                 .HasColumnType("datetime")
                 .HasColumnName("fecha_ingreso");
+            entity.Property(e => e.FechaModificacionHospitalizacion)
+                .HasColumnType("datetime")
+                .HasColumnName("fecha_modificacion_hospitalizacion");
+            entity.Property(e => e.FechaRegistroHospitalizacion)
+                .HasDefaultValueSql("(getdate())")
+                .HasColumnType("datetime")
+                .HasColumnName("fecha_registro_hospitalizacion");
             entity.Property(e => e.IdEmpleado).HasColumnName("id_empleado");
             entity.Property(e => e.IdJaula).HasColumnName("id_jaula");
             entity.Property(e => e.IdMascota).HasColumnName("id_mascota");
@@ -772,7 +817,14 @@ public partial class PetCareConnectContext : DbContext
                 .IsUnicode(false)
                 .HasColumnName("estado_mascota");
             entity.Property(e => e.Esterilizado).HasColumnName("esterilizado");
+            entity.Property(e => e.FechaModificacionMascota)
+                .HasColumnType("datetime")
+                .HasColumnName("fecha_modificacion_mascota");
             entity.Property(e => e.FechaNacimiento).HasColumnName("fecha_nacimiento");
+            entity.Property(e => e.FechaRegistroMascota)
+                .HasDefaultValueSql("(getdate())")
+                .HasColumnType("datetime")
+                .HasColumnName("fecha_registro_mascota");
             entity.Property(e => e.IdCliente).HasColumnName("id_cliente");
             entity.Property(e => e.IdEspecie).HasColumnName("id_especie");
             entity.Property(e => e.IdRaza).HasColumnName("id_raza");
@@ -851,6 +903,13 @@ public partial class PetCareConnectContext : DbContext
                 .HasMaxLength(200)
                 .IsUnicode(false)
                 .HasColumnName("descripcion_metodo_pago");
+            entity.Property(e => e.FechaModificacionMetodoPago)
+                .HasColumnType("datetime")
+                .HasColumnName("fecha_modificacion_metodo_pago");
+            entity.Property(e => e.FechaRegistroMetodoPago)
+                .HasDefaultValueSql("(getdate())")
+                .HasColumnType("datetime")
+                .HasColumnName("fecha_registro_metodo_pago");
             entity.Property(e => e.NombreMetodoPago)
                 .HasMaxLength(100)
                 .IsUnicode(false)
@@ -947,6 +1006,13 @@ public partial class PetCareConnectContext : DbContext
                 .HasMaxLength(20)
                 .IsUnicode(false)
                 .HasColumnName("estado_producto");
+            entity.Property(e => e.FechaModificacionProducto)
+                .HasColumnType("datetime")
+                .HasColumnName("fecha_modificacion_producto");
+            entity.Property(e => e.FechaRegistroProducto)
+                .HasDefaultValueSql("(getdate())")
+                .HasColumnType("datetime")
+                .HasColumnName("fecha_registro_producto");
             entity.Property(e => e.IdCategoria).HasColumnName("id_categoria");
             entity.Property(e => e.NombreProducto)
                 .HasMaxLength(100)
@@ -1018,6 +1084,13 @@ public partial class PetCareConnectContext : DbContext
                 .HasMaxLength(200)
                 .IsUnicode(false)
                 .HasColumnName("descripcion_raza");
+            entity.Property(e => e.FechaModificacionRaza)
+                .HasColumnType("datetime")
+                .HasColumnName("fecha_modificacion_raza");
+            entity.Property(e => e.FechaRegistroRaza)
+                .HasDefaultValueSql("(getdate())")
+                .HasColumnType("datetime")
+                .HasColumnName("fecha_registro_raza");
             entity.Property(e => e.IdEspecie).HasColumnName("id_especie");
             entity.Property(e => e.NombreRaza)
                 .HasMaxLength(50)

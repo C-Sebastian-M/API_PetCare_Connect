@@ -31,6 +31,10 @@ public partial class Consultum
 
     public int? IdMascota { get; set; }
 
+    public DateTime FechaRegistroConsulta { get; set; }
+
+    public DateTime? FechaModificacionConsulta { get; set; }
+
     public virtual ICollection<ConsultaTratamiento> ConsultaTratamientos { get; set; } = new List<ConsultaTratamiento>();
 
     public virtual Citum? IdCitaNavigation { get; set; }

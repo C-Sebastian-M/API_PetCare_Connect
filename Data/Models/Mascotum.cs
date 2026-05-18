@@ -29,6 +29,10 @@ public partial class Mascotum
 
     public int? IdEspecie { get; set; }
 
+    public DateTime? FechaRegistroMascota { get; set; }
+
+    public DateTime? FechaModificacionMascota { get; set; }
+
     public virtual ICollection<Citum> Cita { get; set; } = new List<Citum>();
 
     public virtual ICollection<Consultum> Consulta { get; set; } = new List<Consultum>();

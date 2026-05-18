@@ -23,6 +23,10 @@ public partial class Factura
 
     public int? IdSede { get; set; }
 
+    public DateTime FechaRegistroFactura { get; set; }
+
+    public DateTime? FechaModificacionFactura { get; set; }
+
     public virtual ICollection<DetalleFactura> DetalleFacturas { get; set; } = new List<DetalleFactura>();
 
     public virtual Cliente? IdClienteNavigation { get; set; }

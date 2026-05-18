@@ -1,0 +1,21 @@
+﻿namespace API_PetCare_Connect.DTOs.Consulta
+{
+    public class ConsultaDto
+    {
+        public int IdConsulta { get; set; }
+
+        public DateTime FechaConsulta { get; set; }
+
+        public string? MotivoConsulta { get; set; }
+
+        public decimal? PesoMascota { get; set; }
+
+        public decimal? TemperaturaMascota { get; set; }
+
+        public int? FrecuenciaCardiaca { get; set; }
+
+        public int? IdMascota { get; set; }
+
+        public int? IdEmpleado { get; set; }
+    }
+}

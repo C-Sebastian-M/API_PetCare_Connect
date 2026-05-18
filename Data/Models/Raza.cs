@@ -13,6 +13,10 @@ public partial class Raza
 
     public string? DescripcionRaza { get; set; }
 
+    public DateTime FechaRegistroRaza { get; set; }
+
+    public DateTime? FechaModificacionRaza { get; set; }
+
     public virtual Especie? IdEspecieNavigation { get; set; }
 
     public virtual ICollection<Mascotum> Mascota { get; set; } = new List<Mascotum>();
