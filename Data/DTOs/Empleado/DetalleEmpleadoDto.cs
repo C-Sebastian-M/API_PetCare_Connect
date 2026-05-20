@@ -1,7 +1,8 @@
-﻿namespace API_PetCare_Connect.Data.DTOs.Empleado;
+namespace API_PetCare_Connect.Data.DTOs.Empleado;
 
-public class ActualizarEmpleadoDto
+public class DetalleEmpleadoDto
 {
+    public int IdEmpleado { get; set; }
     public string DniEmpleado { get; set; } = null!;
     public string NombreEmpleado { get; set; } = null!;
     public string ApellidoEmpleado { get; set; } = null!;
@@ -13,6 +14,6 @@ public class ActualizarEmpleadoDto
     public string? EstadoEmpleado { get; set; }
     public DateOnly? FechaContratacion { get; set; }
     public DateOnly? FechaRetiro { get; set; }
-    public int IdRol { get; set; }
-    public int IdSede { get; set; }
+    public string NombreRol { get; set; } = null!;
+    public string NombreSede { get; set; } = null!;
 }
